@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet">
+    <title>Job Opportunity Boost</title>
+    <style>
+        /* Custom styles for the home page */
+        #homePage {
+            background-color: #f0f4f8; /* Light gray background */
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        #homePage h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333; /* Dark gray text */
+            margin-bottom: 20px;
+        }
+        #homePage p {
+            font-size: 1.1rem;
+            color: #555; /* Medium gray text */
+            margin-bottom: 20px;
+        }
+        #homePage img {
+            width: 15%;
+            height: auto;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+		#referralSection {
+            background-color: #fff; /* White background */
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            max-height: 500px;
+            overflow: hidden; /* Ensure it doesn't exceed specified height */
+        }
+        #referralSection h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333; /* Dark gray text */
+            margin-bottom: 10px;
+        }
+        #referralSection p {
+            font-size: 1rem;
+            color: #555; /* Medium gray text */
+            margin-bottom: 10px;
+        }
+		#reviewConfirm{
+			margin-bottom: 20px;
+		}
+		.animate-spin {
+			animation: spin 1s linear infinite; /* Apply a spinning animation */
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <div id="app" class="p-4">
+		<!-- Loading Screen -->
+		<div id="loadingScreen" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+			<div class="flex items-center">
+				<div class="spinner-border text-primary mr-2" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+				<span class="text-lg font-semibold text-white">Loading...</span>
+			</div>
+		</div>
+        <!-- Home Page -->
+        <div id="homePage" class="container mx-auto relative">
+			<h1 class="text-3xl font-bold text-center mb-4">JOB OPPORTUNITY BOOST</h1>
+			<p class="text-center"><strong>🌟 **Unlock Your Dream Career with J.O.B. Opportunity Boost!** 🌟</strong><br> <h2 class="text-center text-2xl"><br>Feeling lost in your job search journey? Let us guide you towards success!</h2></p>
+			<br>
+			<p class="text-center"><strong>At J.O.B., we understand the importance of making a memorable first impression.<br> That's why we offer you a game-changing opportunity to connect with 10,000 potential employers effortlessly.
+<br> Say goodbye to the hassle of manual outreach! With our curated list of 10,000 active emails sourced from LinkedIn, you can now showcase your talents with just a click of a button, straight from your email sent-box</strong></p>
+			<p class="text-center">Our mission is not just about sending emails; it's about empowering you to land your dream job.<br>And with our affordable pricing of just 1 Ksh for every 10 emails, your path to success has never been more accessible.<br>Join the J.O.B. revolution today and let's transform your career aspirations into reality!</p>
+			<img src="{{ url_for('static', filename='images/webimagetwo.jpg') }}" alt="Logo" class="absolute top-0 right-0 mt-4 mr-4">
+			<img src="{{ url_for('static', filename='images/webimageone.jpg') }}" alt="Logo" class="absolute top-0 left-0 mt-4 mr-4">
+			<p class="text-center"><a onclick="navigateTo('uploadEmailList')">⬇️⬇️⬇️👇👇👇</a></p>
+		</div>
+        <!-- Upload Email List -->
+        <div id="uploadEmailList" class="container mx-auto mt-10 py-10 px-4 bg-blue-50 rounded-lg shadow">
+			<h2 class="text-xl font-bold mb-4">Upload Email List</h2>
+			<p>In this section, you have the option to utilize our meticulously curated list of 10,022 LinkedIn-sourced emails, or alternatively, you can leverage your own email list.<br>Click on <strong>Use Default List</strong> to use our list<br>Click on <strong>Upload New List</strong> to upload your list<br><br></p>
+			<div class="flex flex-wrap items-center mb-4">
+				<button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300 mr-2" onclick="useDefaultList()">Use Default List</button>
+				<label for="fileInput" class="px-4 py-2 ml-2 bg-yellow-500 text-white rounded hover:bg-yellow-700 transition duration-300">Upload Email List (.csv)</label>
+				<div class="mb-4 flex items-center ml-1"> <!-- Use ml-auto to push it to the right -->
+					<input type="file" id="fileInput" class="w-full" style="display: none;" onchange="fileSelected(event)">
+					<p id="selectedFileName" class="ml-2"></p>
+				</div>
+			</div>
+			<button onclick="navigateTo('emailSetup')" class="mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-700 transition duration-300 block mx-auto">Next</button>
+		</div>
+
+
+        <!-- Email Setup -->
+        <div id="emailSetup" class="container mx-auto mt-10 py-10 px-4 bg-green-50 rounded-lg shadow">
+            <h2 class="text-xl font-bold mb-4">Email Setup</h2>
+            <p class="mb-4">Follow this guide to get your SMTP app password from Gmail:</p>
+            <!-- Step by step guide -->
+            <div class="mb-4">
+                <p>1. Sign in to your Gmail account.</p>
+                <p>2. Once logged in, click on your profile picture or initial located at the top right corner of the Gmail interface.</p>
+                <p>3. In the dropdown menu, select "Manage your Google Account." This will take you to your Google Account settings page.</p>
+				<p>4. In your Google Account settings, find and click on the "Security" tab in the left-hand menu. This will take you to the Security settings page.</p>
+				<p>5. First make sure that your 2-Step Verification is on, if not turn it on.</p>
+				<p>6. At the top of the security page in search bar type 'app passwords' in the results tab click on the one named "App passwords, Security"</p>
+				<p>7. Add your app name, choose any name you like.</p>
+				<p>8. Copy the 16-character password that comes up and paste it in the "SMTP App-Password" input below.<br><br></p>
+				<p> YouTube video guide for the step-by-step instructions: <a href="https://youtu.be/vCDQF6bq5uk">https://youtu.be/vCDQF6bq5uk</a> </p>
+            </div>
+            <input id="senderEmail" type="email" placeholder="Your Email Address" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-green-500 mb-2">
+            <input id="smtpPassword" type="text" placeholder="SMTP App-Password" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-green-500 mb-4">
+            <button onclick="navigateTo('composeEmail')" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300 block mx-auto">Next</button>
+        </div>
+
+        <!-- Compose Email -->
+		<div id="composeEmail" class="container mx-auto mt-10 py-10 px-4 bg-yellow-50 rounded-lg shadow">
+			<h2 class="text-xl font-bold mb-4">Compose Email</h2>
+			<div class="mb-2">
+				<input id="emailSubject" type="text" placeholder="Subject" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-yellow-500 w-full">
+			</div>
+			<div class="mb-2">
+				<textarea id="emailBody" placeholder="Body" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-yellow-500 w-full" style="height: 20rem; resize: vertical;"></textarea>
+			</div>
+			<!-- Attachments if any -->
+			<div class="mb-4">
+				<input type="file" id="attachmentInput" class="w-full" onchange="handleAttachment(event)" multiple>
+			</div>
+			<button onclick="updateReview(); navigateTo('reviewConfirm')" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-700 transition duration-300 block mx-auto">Next</button>
+		</div>
+		<!-- Review and Confirm -->
+		<div id="reviewConfirm" class="container mx-auto mt-10 py-10 px-4 bg-purple-50 rounded-lg shadow">
+			<h2 class="text-xl font-bold mb-4">Review and Confirm</h2>
+			<p id="reviewSubject" class="mb-2 font-bold"></p>
+			<p id="reviewBody" class="mb-4"></p>
+			<div class="flex justify-center mb-4">
+				<button onclick="navigateTo('composeEmail')" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300 mr-2">Edit</button>
+				<button onclick="navigateTo('payment')" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300">Confirm</button>
+			</div>
+		</div>
+		<!--referral section-->
+		<div id="referralSection" class="container mx-auto">
+            <h2>Referral Code</h2>
+            <p>If you have been referred by someone, please enter their referral code below (Optional):</p>
+            <input id="referralCode" type="text" placeholder="Referral Code" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-blue-500 mb-2 w-full">
+            <p>If you want to apply for the Referral program and have a chance to make a 10% commission, please email <strong>fxmudelemu@gmail.com</strong>.</p>
+        </div>
+        <!-- Payment -->
+		<div id="payment" class="container mx-auto mt-10 py-10 px-4 bg-red-50 rounded-lg shadow">
+			<h2 class="text-xl font-bold mb-4">Payment</h2>
+			<p>Once the payment is confirmed, email sending will initiate automatically.</p>
+			<!-- Test Button for Sending Email -->
+			<button onclick="sendTestEmail()" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300 mt-4">Send Test Email</button>
+		</div>
+    </div>
+<script>
+	function useDefaultList() {
+		var fileInput = document.getElementById('fileInput');
+		var filePath = 'sample_list.csv'; // Path relative to the project folder
+		var file = new File([""], filePath, {type: "text/csv"});
+		var dataTransfer = new DataTransfer();
+		dataTransfer.items.add(file);
+		fileInput.files = dataTransfer.files;
+		fileSelected({ target: fileInput });
+	}
+    function fileSelected(event) {
+       var fileInput = event.target;
+        var files = fileInput.files;
+		var selectedFileNameElement = document.getElementById("selectedFileName");
+        if (files.length > 0) {          
+            console.log("Selected file:", files[0]);
+			selectedFileNameElement.textContent = files[0].name;
+        } else {
+            selectedFileNameElement.textContent = "";
+        }
+    }
+    function navigateTo(page) {
+         var element = document.getElementById(page);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+    }
+	 function updateReview() {
+        var subject = document.getElementById('emailSubject').value;
+        var body = document.getElementById('emailBody').value;
+        document.getElementById('reviewSubject').textContent = "Subject: " + subject;
+        document.getElementById('reviewBody').textContent = "Body: " + body;}
+	function sendTestEmail() {
+		// Show loading screen
+		document.getElementById('loadingScreen').style.display = 'flex';
+
+		// Fetching values from form inputs
+		var emailSubject = document.getElementById('emailSubject').value;
+		var emailBody = document.getElementById('emailBody').value;
+		var senderEmail = document.getElementById('senderEmail').value;
+		var smtpPassword = document.getElementById('smtpPassword').value;
+		var referralCode = document.getElementById('referralCode').value;
+		var attachment = document.getElementById('attachmentInput').files[0];
+
+		// Constructing form data object
+		var formData = new FormData();
+		formData.append('emailSubject', emailSubject);
+		formData.append('emailBody', emailBody);
+		formData.append('senderEmail', senderEmail);
+		formData.append('smtpPassword', smtpPassword);
+		formData.append('referralCode', referralCode);
+		formData.append('attachment', attachment);
+
+		// Checking if a file is selected for uploading email list
+		var uploadedFile = document.getElementById('fileInput').files[0];
+		if (uploadedFile) {
+			formData.append('uploadedFile', uploadedFile);
+		}
+
+		// Constructing HTTP POST request to send test email
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/send_email", true);
+
+		xhr.onload = function () {
+			if (xhr.status === 200) {
+				document.getElementById('loadingScreen').style.display = 'none';
+				// Handle success response
+				alert("Test email sent successfully!");
+
+				// Reset input fields to their default state
+				document.getElementById('emailSubject').value = '';
+				document.getElementById('emailBody').value = '';
+				document.getElementById('senderEmail').value = '';
+				document.getElementById('smtpPassword').value = '';
+				document.getElementById('referralCode').value = '';
+				document.getElementById('attachmentInput').value = ''; // Clearing file input
+				document.getElementById('fileInput').value = ''; // Clearing uploaded file input
+			} else {
+				// Handle error response
+				alert("Error: Failed to send test email.");
+			}
+		};
+
+		xhr.onerror = function () {
+			// Hide loading screen
+			document.getElementById('loadingScreen').style.display = 'none';
+			// Handle network error
+			alert("Error: Failed to send test email. Please check your network connection.");
+		};
+
+		// Sending the form data
+		xhr.send(formData);
+	}
+</script>
+</body>
+</html>
