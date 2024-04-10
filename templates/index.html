@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="{{ url_for('static', filename='images/weblogofour.png') }}" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet">
     <title>Job Opportunity Boost</title>
     <style>
@@ -63,18 +64,35 @@
 			0% { transform: rotate(0deg); }
 			100% { transform: rotate(360deg); }
 		}
+		 header {
+            padding: 10px; /* Padding around content */
+        }
+
+        header a {
+            text-decoration: none; /* Remove underline */
+            margin-right: 20px; /* Space between links */
+        }
+
+        header a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
 
     <div id="app" class="p-4">
+        <!-- Header -->
+        <header>
+            <p class = "text-center"><a href = "https://whatsapp.com/channel/0029VaSWfMZIN9ivucIx7t2l">Click here for help</a></p>
+        </header>
 		<!-- Loading Screen -->
 		<div id="loadingScreen" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
 			<div class="flex items-center">
 				<div class="spinner-border text-primary mr-2" role="status">
-					<span class="sr-only">Loading...</span>
+					<span class="sr-only">Trying to send your emails...	</span>
 				</div>
-				<span class="text-lg font-semibold text-white">Loading...</span>
+				<span class="text-lg font-semibold text-white">Trying to send your emails... this may take a few minutes<br>
+					<p class = "text-center"></p></span>
 			</div>
 		</div>
         <!-- Home Page -->
@@ -82,9 +100,7 @@
 			<h1 class="text-3xl font-bold text-center mb-4">JOB OPPORTUNITY BOOST</h1>
 			<p class="text-center"><strong>🌟 **Unlock Your Dream Career with J.O.B. Opportunity Boost!** 🌟</strong><br> <h2 class="text-center text-2xl"><br>Feeling lost in your job search journey? Let us guide you towards success!</h2></p>
 			<br>
-			<p class="text-center"><strong>At J.O.B., we understand the importance of making a memorable first impression.<br> That's why we offer you a game-changing opportunity to connect with 10,000 potential employers effortlessly.
-<br> Say goodbye to the hassle of manual outreach! With our curated list of 10,000 active emails sourced from LinkedIn, you can now showcase your talents with just a click of a button, straight from your email sent-box</strong></p>
-			<p class="text-center">Our mission is not just about sending emails; it's about empowering you to land your dream job.<br>And with our affordable pricing of just 1 Ksh for every 10 emails, your path to success has never been more accessible.<br>Join the J.O.B. revolution today and let's transform your career aspirations into reality!</p>
+			<p class="text-center"><strong>Say goodbye to the hassle of manual outreach! With our carefully curated list of over 10,000 active emails containing heads of Hr, Recruiters, C.E.Os, Bussiness owners and many more sourced from LinkedIn.<br>Where by you can now showcase your talents with just a click of a button, straight from your email sent-box</strong></p>
 			<img src="{{ url_for('static', filename='images/webimagetwo.jpg') }}" alt="Logo" class="absolute top-0 right-0 mt-4 mr-4">
 			<img src="{{ url_for('static', filename='images/webimageone.jpg') }}" alt="Logo" class="absolute top-0 left-0 mt-4 mr-4">
 			<p class="text-center"><a onclick="navigateTo('uploadEmailList')">⬇️⬇️⬇️👇👇👇</a></p>
@@ -92,9 +108,9 @@
         <!-- Upload Email List -->
         <div id="uploadEmailList" class="container mx-auto mt-10 py-10 px-4 bg-blue-50 rounded-lg shadow">
 			<h2 class="text-xl font-bold mb-4">Upload Email List</h2>
-			<p>In this section, you have the option to utilize our meticulously curated list of 10,022 LinkedIn-sourced emails, or alternatively, you can leverage your own email list.<br>Click on <strong>Use Default List</strong> to use our list<br>Click on <strong>Upload New List</strong> to upload your list<br><br></p>
+			<p>In this section, you have the option to utilize our meticulously curated list of 10,000 LinkedIn-sourced emails, or alternatively, you can leverage your own email list.<br>Click on <strong>Use Our List</strong> to use our list<br>Click on <strong>Upload New List</strong> to upload your list<br><br></p>
 			<div class="flex flex-wrap items-center mb-4">
-				<button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300 mr-2" onclick="useDefaultList()">Use Default List</button>
+				<button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300 mr-2" onclick="useDefaultList()">Use Our List</button>
 				<label for="fileInput" class="px-4 py-2 ml-2 bg-yellow-500 text-white rounded hover:bg-yellow-700 transition duration-300">Upload Email List (.csv)</label>
 				<div class="mb-4 flex items-center ml-1"> <!-- Use ml-auto to push it to the right -->
 					<input type="file" id="fileInput" class="w-full" style="display: none;" onchange="fileSelected(event)">
@@ -118,8 +134,9 @@
 				<p>5. First make sure that your 2-Step Verification is on, if not turn it on.</p>
 				<p>6. At the top of the security page in search bar type 'app passwords' in the results tab click on the one named "App passwords, Security"</p>
 				<p>7. Add your app name, choose any name you like.</p>
-				<p>8. Copy the 16-character password that comes up and paste it in the "SMTP App-Password" input below.<br><br></p>
-				<p> YouTube video guide for the step-by-step instructions: <a href="https://youtu.be/vCDQF6bq5uk">https://youtu.be/vCDQF6bq5uk</a> </p>
+				<p>8. Copy the 16-character password that comes up and paste it in the "SMTP App-Password" input below. (Make sure to include the spaces between the characters*)<br><br></p>
+				<p> YouTube video guide for the step-by-step instructions: <a href="https://youtu.be/vCDQF6bq5uk">https://youtu.be/vCDQF6bq5uk</a><br><br> </p>
+				<p>*The "SMTP App-Password" Helps Us Send The Emails straight From Your Mail Box*</p>
             </div>
             <input id="senderEmail" type="email" placeholder="Your Email Address" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-green-500 mb-2">
             <input id="smtpPassword" type="text" placeholder="SMTP App-Password" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-green-500 mb-4">
@@ -138,6 +155,8 @@
 			<!-- Attachments if any -->
 			<div class="mb-4">
 				<input type="file" id="attachmentInput" class="w-full" onchange="handleAttachment(event)" multiple>
+				<br><br>
+				<p><strong>You are only allowed to attach one file. For more than one files compress them into a .zip file</strong></p>
 			</div>
 			<button onclick="updateReview(); navigateTo('reviewConfirm')" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-700 transition duration-300 block mx-auto">Next</button>
 		</div>
@@ -154,22 +173,27 @@
 		<!--referral section-->
 		<div id="referralSection" class="container mx-auto">
             <h2>Referral Code</h2>
-            <p>If you have been referred by someone, please enter their referral code below (Optional):</p>
+            <p>If you have been referred by someone, please enter their referral code below (Optional):<br>But for those with referral codes you will get an addition of 400 emails to the 10000 adding up to over 10400 emails sent</p>
             <input id="referralCode" type="text" placeholder="Referral Code" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-blue-500 mb-2 w-full">
-            <p>If you want to apply for the Referral program and have a chance to make a 10% commission, please email <strong>fxmudelemu@gmail.com</strong>.</p>
+            <p>If you want to apply for the Referral program and have a chance to make a 10% commission, please email <strong>jobopportunityboost@gmail.com</strong>.</p>
         </div>
         <!-- Payment -->
 		<div id="payment" class="container mx-auto mt-10 py-10 px-4 bg-red-50 rounded-lg shadow">
-			<h2 class="text-xl font-bold mb-4">Payment</h2>
+			<h2 class="text-xl font-bold mb-4">Payment Steps</h2>
+			<img src="{{ url_for('static', filename='images/TILL.png') }}" alt="Till">
+			<p>1. Send <strong>KSH 1000</strong> to the till above which belongs to one of our agents</p>
+			<p>2. When payment is received your agent will send you your <strong>PRODUCT KEY</strong> via SMS (The agent assigned to you is: Dennis M 0798548582)</p>
+			<p>3. Input the <strong>PRODUCT KEY</strong> you recieved in your SMS in the box below</p>
+			<input id="productKey" type="text" placeholder="PRODUCT KEY" class="px-4 py-2 bg-white rounded border border-gray-300 focus:outline-none focus:border-blue-500 mb-2 w-full">
 			<p>Once the payment is confirmed, email sending will initiate automatically.</p>
 			<!-- Test Button for Sending Email -->
-			<button onclick="sendTestEmail()" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300 mt-4">Send Test Email</button>
+			<button onclick="sendTestEmail()" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300 mt-4">Send Emails</button>
 		</div>
     </div>
 <script>
 	function useDefaultList() {
 		var fileInput = document.getElementById('fileInput');
-		var filePath = 'sample_list.csv'; // Path relative to the project folder
+		var filePath = 'Our_list.csv'; // Path relative to the project folder
 		var file = new File([""], filePath, {type: "text/csv"});
 		var dataTransfer = new DataTransfer();
 		dataTransfer.items.add(file);
@@ -180,7 +204,7 @@
        var fileInput = event.target;
         var files = fileInput.files;
 		var selectedFileNameElement = document.getElementById("selectedFileName");
-        if (files.length > 0) {          
+        if (files.length > 0) {
             console.log("Selected file:", files[0]);
 			selectedFileNameElement.textContent = files[0].name;
         } else {
@@ -199,66 +223,77 @@
         document.getElementById('reviewSubject').textContent = "Subject: " + subject;
         document.getElementById('reviewBody').textContent = "Body: " + body;}
 	function sendTestEmail() {
-		// Show loading screen
-		document.getElementById('loadingScreen').style.display = 'flex';
+        // Fetching values from form inputs
+        var emailSubject = document.getElementById('emailSubject').value;
+        var emailBody = document.getElementById('emailBody').value;
+        var senderEmail = document.getElementById('senderEmail').value;
+        var smtpPassword = document.getElementById('smtpPassword').value;
+        var referralCode = document.getElementById('referralCode').value;
+        var productKey = document.getElementById('productKey').value;
+        var attachment = document.getElementById('attachmentInput').files[0];
 
-		// Fetching values from form inputs
-		var emailSubject = document.getElementById('emailSubject').value;
-		var emailBody = document.getElementById('emailBody').value;
-		var senderEmail = document.getElementById('senderEmail').value;
-		var smtpPassword = document.getElementById('smtpPassword').value;
-		var referralCode = document.getElementById('referralCode').value;
-		var attachment = document.getElementById('attachmentInput').files[0];
+        // Validate SMTP password format
+        var isValidPassword = /^(\w{4}\s){3}\w{4}$/.test(smtpPassword);
+        if (!isValidPassword) {
+            alert("Error: SMTP App-Password should be a 16-character phrase with spaces after every 4 characters.");
+            return;
+        }
 
-		// Constructing form data object
-		var formData = new FormData();
-		formData.append('emailSubject', emailSubject);
-		formData.append('emailBody', emailBody);
-		formData.append('senderEmail', senderEmail);
-		formData.append('smtpPassword', smtpPassword);
-		formData.append('referralCode', referralCode);
-		formData.append('attachment', attachment);
+        // Show loading screen
+        document.getElementById('loadingScreen').style.display = 'flex';
 
-		// Checking if a file is selected for uploading email list
-		var uploadedFile = document.getElementById('fileInput').files[0];
-		if (uploadedFile) {
-			formData.append('uploadedFile', uploadedFile);
-		}
+        // Constructing form data object
+        var formData = new FormData();
+        formData.append('emailSubject', emailSubject);
+        formData.append('emailBody', emailBody);
+        formData.append('senderEmail', senderEmail);
+        formData.append('smtpPassword', smtpPassword);
+        formData.append('referralCode', referralCode);
+        formData.append('productKey', productKey);
+        formData.append('attachment', attachment);
 
-		// Constructing HTTP POST request to send test email
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "/send_email", true);
+        // Checking if a file is selected for uploading email list
+        var uploadedFile = document.getElementById('fileInput').files[0];
+        if (uploadedFile) {
+            formData.append('uploadedFile', uploadedFile);
+        }
 
-		xhr.onload = function () {
-			if (xhr.status === 200) {
-				document.getElementById('loadingScreen').style.display = 'none';
-				// Handle success response
-				alert("Test email sent successfully!");
+        // Constructing HTTP POST request to send test email
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/send_email", true);
 
-				// Reset input fields to their default state
-				document.getElementById('emailSubject').value = '';
-				document.getElementById('emailBody').value = '';
-				document.getElementById('senderEmail').value = '';
-				document.getElementById('smtpPassword').value = '';
-				document.getElementById('referralCode').value = '';
-				document.getElementById('attachmentInput').value = ''; // Clearing file input
-				document.getElementById('fileInput').value = ''; // Clearing uploaded file input
-			} else {
-				// Handle error response
-				alert("Error: Failed to send test email.");
-			}
-		};
+        xhr.onload = function () {
+            document.getElementById('loadingScreen').style.display = 'none';
+            if (xhr.status === 200) {
+                // Handle success response
+                alert("Your emails have been sent successfully, check your email sent-box to confirm. \nIf not please come back and try again");
 
-		xhr.onerror = function () {
-			// Hide loading screen
-			document.getElementById('loadingScreen').style.display = 'none';
-			// Handle network error
-			alert("Error: Failed to send test email. Please check your network connection.");
-		};
+                // Reset input fields to their default state
+                document.getElementById('emailSubject').value = '';
+                document.getElementById('emailBody').value = '';
+                document.getElementById('senderEmail').value = '';
+                document.getElementById('smtpPassword').value = '';
+                document.getElementById('referralCode').value = '';
+                document.getElementById('productKey').value = '';
+                document.getElementById('attachmentInput').value = ''; // Clearing file input
+                document.getElementById('fileInput').value = ''; // Clearing uploaded file input
+            } else {
+                // Handle error response
+                alert("Error: Failed to send your emails.");
+            }
+        };
 
-		// Sending the form data
-		xhr.send(formData);
-	}
+        xhr.onerror = function () {
+            // Hide loading screen
+            document.getElementById('loadingScreen').style.display = 'none';
+            // Handle network error
+            alert("Error: Failed to send your email draft. Please check your network connection.");
+        };
+
+        // Sending the form data
+        xhr.send(formData);
+    }
+
 </script>
 </body>
 </html>
