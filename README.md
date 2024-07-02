@@ -15,7 +15,7 @@
 ![Payment](./J.O.B.Screenshots/payment.png)
 
 ### Review + Referral
-![Review + Referral](./J.O.B.Screenshots/review+referral.png)
+![Review + Referral](./J.O.B.Screenshots/reviewreferral.png)
 
 ### Upload Email List
-![Upload Email List](./J.O.B.Screenshots/upload%20emaillist.png)
+![Upload Email List](./J.O.B.Screenshots/uploademaillist.png)
